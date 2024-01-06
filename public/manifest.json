@@ -1,26 +1,46 @@
 {
-  "short_name": "React App",
-  "name": "Good name suitable for your app",
-  "description":"A good description for your app",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"manifest_version": 3,
+	"name": "Give a suitable name to your extension",
+	"version": "1.0.0",
+	"description": "Describe your extension here",
+	"action": {
+		"default_popup": "index.html", 
+		"default_icon": "icon-popup.png"
+	},
+	"permissions": [
+		"storage" 
+	],
+	"background": {
+		"service_worker": "/static/js/background.js" 
+	},
+	"host_permissions": [  
+		"http://localhost:3000/",
+		"http://localhost:5000/"
+	],
+	"icons": {
+		"128": "icon-342.png" 
+	},
+	"externally_connectable": { 
+		"matches": ["*://*/*", "https://www.external_website_url/*"]
+	},
+	"content_scripts": [  
+		{
+			"matches": ["http://www.youtube.com/*", "https://www.linkedin.com/*","https://mail.google.com/*"], 
+			"js": [
+				"/static/js/content.js",
+				"/static/js/background.js",
+				"/static/js/main.js"
+			]
+		},
+		{
+			"matches": ["https://www.external_website_url/*"], 
+			"js": ["/static/js/background.js"]
+		}
+	],
+	"web_accessible_resources": [ 
+		{
+			"resources": ["icon-342.png"],
+			"matches": ["https://*/*"]
+		}
+	]
 }
