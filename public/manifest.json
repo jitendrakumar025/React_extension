@@ -5,7 +5,7 @@
 	"description": "Describe your extension here",
 	"action": {
 		"default_popup": "index.html", 
-		"default_icon": "icon-popup.png"
+		"default_icon": "logo192.png"
 	},
 	"permissions": [
 		"storage" 
@@ -15,31 +15,28 @@
 	},
 	"host_permissions": [  
 		"http://localhost:3000/",
-		"http://localhost:5000/"
+		"http://localhost:5000/",
+		"https://www.youtube.com/*"
 	],
 	"icons": {
-		"128": "icon-342.png" 
+		"128": "logo512.png" 
 	},
 	"externally_connectable": { 
 		"matches": ["*://*/*", "https://www.external_website_url/*"]
 	},
 	"content_scripts": [  
 		{
-			"matches": ["http://www.youtube.com/*", "https://www.linkedin.com/*","https://mail.google.com/*"], 
+			"matches": ["https://www.youtube.com/*", "https://www.linkedin.com/*","https://mail.google.com/*"], 
 			"js": [
 				"/static/js/content.js",
 				"/static/js/background.js",
 				"/static/js/main.js"
 			]
-		},
-		{
-			"matches": ["https://www.external_website_url/*"], 
-			"js": ["/static/js/background.js"]
 		}
 	],
 	"web_accessible_resources": [ 
 		{
-			"resources": ["icon-342.png"],
+			"resources": ["logo512.png"],
 			"matches": ["https://*/*"]
 		}
 	]

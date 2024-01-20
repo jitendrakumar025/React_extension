@@ -11,3 +11,18 @@
 //like : chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 //like : chrome.tabs.executeScript(tabs[0].id, {file: "content.js"}, function() {
 //like : chrome.tabs.executeScript(tabs[0].id, {code: "document.body.style.backgroundColor='red'"});
+
+/*global chrome*/
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    console.log("background script received message from content script");
+    console.log(message);
+    console.log(sender);
+    sendResponse({response: "response from background script"});
+});
+
+console.log("background script running");
+
+
+// Coded by @Jitendra Bunkar 
+// Follow me on Medium https://medium.com/@mr.techie for more tech related blogs 
